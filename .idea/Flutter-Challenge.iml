@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/aplicativo_flutter_challenge/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/aplicativo_flutter_challenge/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/aplicativo_flutter_challenge/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_challenge_bank/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_challenge_bank/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_challenge_bank/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_challenge_web/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_challenge_web/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_challenge_web/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_challenge_web_taskia/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_challenge_web_taskia/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_challenge_web_taskia/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
+  </component>
+</module>
