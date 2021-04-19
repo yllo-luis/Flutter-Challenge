@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_challenge_destination/components/drawer_component.dart';
 import 'package:flutter_challenge_destination/components/home_page_card.dart';
+import 'package:flutter_challenge_destination/components/travelers_component.dart';
+import 'package:flutter_challenge_destination/screens/detailsPage/details_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -36,7 +38,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       drawer: Drawer(
         child: Column(
           children: [
-            SafeArea(
+            Padding(
+              padding:
+                  const EdgeInsets.only(top: 40, left: 0, right: 0, bottom: 0),
               child: CircleAvatar(
                 radius: 45,
                 backgroundImage:
@@ -154,11 +158,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 4.0),
-                        child: HomePageCard(
-                            assetPath:
-                                "assets/Destinations/jakob-rosen-XUO119OlcEU-unsplash.jpg",
-                            locationName: "A Grande montanha",
-                            placeName: "Argentina"),
+                        child: GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsPage(
+                                    assetPath:
+                                        "assets/Destinations/jakob-rosen-XUO119OlcEU-unsplash.jpg",
+                                    placeName: "A Grande montanha"),
+                              )),
+                          child: HomePageCard(
+                              assetPath:
+                                  "assets/Destinations/jakob-rosen-XUO119OlcEU-unsplash.jpg",
+                              locationName: "A Grande montanha",
+                              placeName: "Argentina"),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
@@ -277,7 +291,79 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ],
                   ),
                 ]),
-              )
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 16, right: 0, left: 0, bottom: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        "Popular \nTravelers",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: Colors.green[900],
+                            fontSize: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: TextButton(
+                          onPressed: () => ScaffoldMessenger.of(context)
+                              .showSnackBar(SnackBar(
+                                  content: Text("Estou apertando um botão"))),
+                          child: Text(
+                            "See all",
+                            style: TextStyle(
+                                fontSize: 18, color: Colors.green[900]),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.16,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 12, left: 12, bottom: 8, top: 0),
+                      child: TravelersComponent(
+                          assetName:
+                              "assets/dmitriy-k-qDqlU6IwtoA-unsplash.jpg",
+                          personName: "Jane Foster \nCanada"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 12, left: 12, bottom: 8, top: 0),
+                      child: TravelersComponent(
+                          assetName:
+                              "assets/harry-shelton-x3bS-vszl5Y-unsplash.jpg",
+                          personName: "Jane Marie \nAustralia"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 12, left: 12, bottom: 8, top: 0),
+                      child: TravelersComponent(
+                          assetName: "assets/steph V2.png",
+                          personName: "Steph Sainz\nPortugal"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 12, left: 12, bottom: 8, top: 0),
+                      child: TravelersComponent(
+                          assetName:
+                              "assets/rooted-studio-VG7ZLPU4P44-unsplash.jpg",
+                          personName: "John mill \nChina"),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

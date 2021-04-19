@@ -15,11 +15,9 @@ class HomePageCard extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.40,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          image: DecorationImage(image: AssetImage(assetPath)),
-          boxShadow: [
-            BoxShadow(color: Colors.black26, blurRadius: 5, spreadRadius: 0)
-          ]),
+        borderRadius: BorderRadius.circular(25),
+        image: DecorationImage(image: AssetImage(assetPath)),
+      ),
       child: Stack(
         children: [
           Align(
