@@ -177,20 +177,42 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 4.0),
-                        child: HomePageCard(
-                            assetPath:
-                                "assets/Destinations/daniela-izotenko-hOhlYhAiizc-unsplash.jpg",
-                            locationName: "A Grande montanha",
-                            placeName: "Argentina"),
+                        child: GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsPage(
+                                  assetPath:
+                                      "assets/Destinations/daniela-izotenko-hOhlYhAiizc-unsplash.jpg",
+                                  placeName: "A Grande Montanha",
+                                ),
+                              )),
+                          child: HomePageCard(
+                              assetPath:
+                                  "assets/Destinations/daniela-izotenko-hOhlYhAiizc-unsplash.jpg",
+                              locationName: "A Grande montanha",
+                              placeName: "Argentina"),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 4.0),
-                        child: HomePageCard(
-                            assetPath:
-                                "assets/Destinations/charly-pn-57-x9zCyXJo-unsplash.jpg",
-                            locationName: "A Grande montanha",
-                            placeName: "Argentina"),
+                        child: GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsPage(
+                                  assetPath:
+                                      "assets/Destinations/charly-pn-57-x9zCyXJo-unsplash.jpg",
+                                  placeName: "A Grande montanha",
+                                ),
+                              )),
+                          child: HomePageCard(
+                              assetPath:
+                                  "assets/Destinations/charly-pn-57-x9zCyXJo-unsplash.jpg",
+                              locationName: "A Grande montanha",
+                              placeName: "Argentina"),
+                        ),
                       ),
                     ],
                   ),
