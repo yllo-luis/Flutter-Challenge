@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_challenge_pickle">
    <application
-        android:label="flutter_challenge_pickle"
+        android:label="RickPedia"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
