@@ -7,5 +7,5 @@ class Constants {
 
   String getLocation = protocol + address + "/api/location/";
 
-  String getEpisodes = protocol + address + "/api/episodes";
+  String getEpisodes = protocol + address + "/api/episodes/";
 }
