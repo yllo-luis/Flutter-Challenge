@@ -4,7 +4,7 @@ import 'package:flutter_challenge_pickle/service/caracter_service.dart';
 class CaracterRepository {
   CaracterService caracterService = CaracterService();
 
-  Future<List<CaracterModel>> getCaractersPerPage(String page) {
+  Future<CaracterModel?> getCaractersPerPage(String page) {
     return caracterService.getCaractersPerPage(page);
   }
 

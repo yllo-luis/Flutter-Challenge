@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge_pickle/components/testingButton.dart';
+import 'package:flutter_challenge_pickle/models/caracter_model.dart';
+import 'package:flutter_challenge_pickle/repository/caracter_repository.dart';
 import 'package:flutter_challenge_pickle/screens/searchScreen/search_screen.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -50,11 +53,43 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Colors.green[600], fontSize: 16),
                       ),
                       Container(
-                        height: sz(150),
+                        height: sz(300),
                         child: ListView(
-                          scrollDirection: Axis.horizontal,
                           padding: EdgeInsets.all(18),
-                          children: [],
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: TestingButton(
+                                  width: 100,
+                                  height: 50,
+                                  buttonText:
+                                      "Teste de requisições de personagens",
+                                  buttonFunction: () async {
+                                    CaracterModel? teste =
+                                        await CaracterRepository()
+                                            .getCaractersPerPage("1");
+                                    print("Nome: ${teste!.results![5].name}");
+                                  }),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: TestingButton(
+                                  width: 100,
+                                  height: 50,
+                                  buttonText:
+                                      "Teste de requisições de episodios",
+                                  buttonFunction: () {}),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: TestingButton(
+                                  width: 100,
+                                  height: 50,
+                                  buttonText:
+                                      "Teste de requisições de localização",
+                                  buttonFunction: () {}),
+                            ),
+                          ],
                         ),
                       )
                     ],

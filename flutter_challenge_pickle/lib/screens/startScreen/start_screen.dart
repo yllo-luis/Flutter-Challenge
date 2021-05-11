@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_challenge_pickle/screens/homeScreen/home_screen.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:simple_code/simple_code.dart';
 
 class StartScreen extends StatefulWidget {
   @override
@@ -41,13 +40,12 @@ class _StartScreenState extends State<StartScreen> {
                 focusElevation: 0,
                 highlightElevation: 0,
                 label: Text("Continuar"),
-                // TODO: ISSO CLARAMENTE ESTÁ ERRADO?!?!?!?!?
                 onPressed: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          HomeScreen(key: SimpleCode.navigatorKey),
-                    )),
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                ),
               ),
             )
           ],

@@ -7,31 +7,26 @@ import 'package:flutter_challenge_pickle/utils/constants.dart';
 import 'package:http/http.dart' as Http;
 
 class CaracterService {
-  Future<List<CaracterModel>> getCaractersPerPage(String page) async {
-    List<CaracterModel> results = [];
+  Future<CaracterModel?> getCaractersPerPage(String page) async {
+    CaracterModel? result;
     try {
       Uri url = Uri.parse(Constants().getCaracters + "?page=$page");
       var response = await Http.get(url);
       if (response.statusCode == 200) {
         var responseBody = response.body;
         if (responseBody.isNotEmpty == true) {
-          List<dynamic> info = jsonDecode(responseBody);
-          if (info.length > 0) {
-            info.forEach((element) {
-              results.add(CaracterModel.fromJson(element));
-            });
-            return results;
-          }
+          result = CaracterModel.fromJson(json.decode(responseBody));
+          return result;
+        } else {
+          developer.log(
+              "Falha em requisição getCaractersPerPage: StatusCode -> ${response.statusCode}");
         }
-      } else {
-        developer.log(
-            "Falha em requisição getCaractersPerPage: StatusCode -> ${response.statusCode}");
       }
     } catch (e, stackTrace) {
       developer.log(
           "Falha em requisição getCaractersPerPage: exception -> $e stackTrace -> $stackTrace");
     }
-    return results;
+    return result;
   }
 
   Future<CaracterModel?> getCaractersPerName(String name) async {

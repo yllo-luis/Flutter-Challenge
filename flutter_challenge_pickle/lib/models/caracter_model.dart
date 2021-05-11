@@ -1,107 +1,138 @@
-// To parse this JSON data, do
-//
-//     final caracterModel = caracterModelFromMap(jsonString);
-
-import 'dart:convert';
-
 class CaracterModel {
-  CaracterModel({
-    this.id,
-    this.name,
-    this.status,
-    this.species,
-    this.type,
-    this.gender,
-    this.origin,
-    this.location,
-    this.image,
-    this.episode,
-    this.url,
-    this.created,
-  });
+  Info? info;
+  List<Results>? results;
 
-  final int? id;
-  final String? name;
-  final String? status;
-  final String? species;
-  final String? type;
-  final String? gender;
-  final Location? origin;
-  final Location? location;
-  final String? image;
-  final List<String>? episode;
-  final String? url;
-  final DateTime? created;
+  CaracterModel({this.info, this.results});
 
-  factory CaracterModel.fromJson(Map<String, dynamic> json) {
-    return CaracterModel(
-        id: json['id'],
-        image: json['image'],
-        created: json['created'],
-        episode: json['episode'],
-        gender: json['gender'],
-        location: json['location'],
-        name: json['name'],
-        origin: json['origin'],
-        species: json['species'],
-        status: json['status'],
-        type: json['type'],
-        url: json['url']);
+  CaracterModel.fromJson(Map<String, dynamic> json) {
+    info = json['info'] != null ? new Info.fromJson(json['info']) : null;
+    if (json['results'] != null) {
+      results = [];
+      json['results'].forEach((v) {
+        results!.add(new Results.fromJson(v));
+      });
+    }
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory CaracterModel.fromMap(Map<String, dynamic> json) => CaracterModel(
-        id: json["id"],
-        name: json["name"],
-        status: json["status"],
-        species: json["species"],
-        type: json["type"],
-        gender: json["gender"],
-        origin: Location.fromMap(json["origin"]),
-        location: Location.fromMap(json["location"]),
-        image: json["image"],
-        episode: List<String>.from(json["episode"].map((x) => x)),
-        url: json["url"],
-        created: DateTime.parse(json["created"]),
-      );
-
-  Map<String, dynamic> toMap() => {
-        "id": id,
-        "name": name,
-        "status": status,
-        "species": species,
-        "type": type,
-        "gender": gender,
-        "origin": origin!.toMap(),
-        "location": location!.toMap(),
-        "image": image,
-        "episode": List<dynamic>.from(episode!.map((x) => x)),
-        "url": url,
-        "created": created!.toIso8601String(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.info != null) {
+      data['info'] = this.info!.toJson();
+    }
+    if (this.results != null) {
+      data['results'] = this.results!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
-class Location {
-  Location({
-    this.name,
-    this.url,
-  });
+class Info {
+  int? count;
+  int? pages;
+  String? next;
+  String? prev;
 
-  final String? name;
-  final String? url;
+  Info({this.count, this.pages, this.next, this.prev});
 
-  factory Location.fromJson(String str) => Location.fromMap(json.decode(str));
+  Info.fromJson(Map<String, dynamic> json) {
+    count = json['count'];
+    pages = json['pages'];
+    next = json['next'];
+    prev = json['prev'];
+  }
 
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['count'] = this.count;
+    data['pages'] = this.pages;
+    data['next'] = this.next;
+    data['prev'] = this.prev;
+    return data;
+  }
+}
 
-  factory Location.fromMap(Map<String, dynamic> json) => Location(
-        name: json["name"],
-        url: json["url"],
-      );
+class Results {
+  int? id;
+  String? name;
+  String? status;
+  String? species;
+  String? type;
+  String? gender;
+  Origin? origin;
+  Origin? location;
+  String? image;
+  List<String>? episode;
+  String? url;
+  String? created;
 
-  Map<String, dynamic> toMap() => {
-        "name": name,
-        "url": url,
-      };
+  Results(
+      {this.id,
+      this.name,
+      this.status,
+      this.species,
+      this.type,
+      this.gender,
+      this.origin,
+      this.location,
+      this.image,
+      this.episode,
+      this.url,
+      this.created});
+
+  Results.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    status = json['status'];
+    species = json['species'];
+    type = json['type'];
+    gender = json['gender'];
+    origin =
+        json['origin'] != null ? new Origin.fromJson(json['origin']) : null;
+    location =
+        json['location'] != null ? new Origin.fromJson(json['location']) : null;
+    image = json['image'];
+    episode = json['episode'].cast<String>();
+    url = json['url'];
+    created = json['created'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['status'] = this.status;
+    data['species'] = this.species;
+    data['type'] = this.type;
+    data['gender'] = this.gender;
+    if (this.origin != null) {
+      data['origin'] = this.origin!.toJson();
+    }
+    if (this.location != null) {
+      data['location'] = this.location!.toJson();
+    }
+    data['image'] = this.image;
+    data['episode'] = this.episode;
+    data['url'] = this.url;
+    data['created'] = this.created;
+    return data;
+  }
+}
+
+class Origin {
+  String? name;
+  String? url;
+
+  Origin({this.name, this.url});
+
+  Origin.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    url = json['url'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['url'] = this.url;
+    return data;
+  }
 }
