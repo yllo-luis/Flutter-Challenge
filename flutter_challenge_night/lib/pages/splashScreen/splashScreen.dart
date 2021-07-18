@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_challenge_night/pages/homeScreen/homeScreen.dart';
 import 'package:flutter_challenge_night/viewModels/splashController.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -56,12 +56,19 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(right: 56, left: 56, bottom: 50),
               child: TheNightButtonComponent(
-                buttonFuction: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
-                  ),
-                ),
+                buttonFuction: () async {
+                  await context
+                      .read<AppController>()
+                      .setLoginBool(false)
+                      .whenComplete(
+                        () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        ),
+                      );
+                },
                 buttonText: "Sair",
               ),
             )
